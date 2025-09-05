@@ -29,7 +29,6 @@ class Lider {
 
         if (inicio != 1) {
             System.out.println("Jogo não iniciado.");
-            scanner.close();
             return;
         }
 
