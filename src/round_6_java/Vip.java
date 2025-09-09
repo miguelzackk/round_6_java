@@ -123,14 +123,20 @@ public class Vip extends Jogador {
 		}
 
 		if (!jogadores[jogadorAposta].isStatus()) {
-			saldo -= valorApostado;
-			System.out.println("Infelizmente, o jogador " + jogadorAposta + " foi eliminado.");
-			System.out.println("Você perdeu a aposta de " + valorApostado + ". Novo saldo: " + saldo);
+		    saldo -= valorApostado;
+		    System.out.println("Infelizmente, o jogador " + jogadorAposta + " foi eliminado.");
+		    System.out.println("Você perdeu a aposta de " + valorApostado + ". Novo saldo: " + saldo);
+
+		    if (saldo <= 0) {
+		        System.out.println("\nSeu saldo zerou. O senhor não pode mais continuar no jogo.");
+		        System.exit(0);
+		    }
 		} else {
-			saldo += valorApostado;
-			System.out.println("Boa notícia! O jogador " + jogadorAposta + " sobreviveu.");
-			System.out.println("Você ganhou " + valorApostado + "! Novo saldo: " + saldo);
+		    saldo += valorApostado;
+		    System.out.println("Boa notícia! O jogador " + jogadorAposta + " sobreviveu.");
+		    System.out.println("Você ganhou " + valorApostado + "! Novo saldo: " + saldo);
 		}
+
 	}
 
 	private void listarVivos() {
