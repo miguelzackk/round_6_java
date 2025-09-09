@@ -37,7 +37,7 @@ public class Vip extends Jogador {
 			// Menu
 			while (true) {
 				System.out.println("\nSelecione o que deseja fazer: ");
-				System.out.println("1 - Jogar o dia " + diaAtual + ".");
+				System.out.println("1 - Assistir e apostar o dia " + diaAtual + ".");
 				System.out.println("2 - Verificar meu perfil.");
 				System.out.println("3 - Verificar meu saldo.");
 				System.out.println("4 - Listar jogadores vivos.");
@@ -140,14 +140,22 @@ public class Vip extends Jogador {
 	}
 
 	private void listarVivos() {
-		System.out.println("\nJogadores ainda vivos:");
-		for (int i = 1; i < 457; i++) {
-			if (jogadores[i].isStatus()) {
-				System.out.print(i + " ");
-			}
-		}
-		System.out.println("\nTotal de jogadores vivos: " + contarVivos());
+	    System.out.println("\nJogadores ainda vivos:");
+
+	    int count = 0;
+	    for (int i = 1; i < 457; i++) {
+	        if (jogadores[i].isStatus()) {
+	            System.out.printf("%-10s", i); // coluna de largura fixa
+	            count++;
+	            if (count % 5 == 0) { // quebra de linha a cada 5 colunas
+	                System.out.println();
+	            }
+	        }
+	    }
+
+	    System.out.println("\n\nTotal de jogadores vivos: " + contarVivos());
 	}
+
 
 	private int contarVivos() {
 		int vivos = 0;
