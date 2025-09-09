@@ -145,9 +145,9 @@ public class Vip extends Jogador {
 	    int count = 0;
 	    for (int i = 1; i < 457; i++) {
 	        if (jogadores[i].isStatus()) {
-	            System.out.printf("%-10s", i); // coluna de largura fixa
+	            System.out.printf("%-10s", i); 
 	            count++;
-	            if (count % 5 == 0) { // quebra de linha a cada 5 colunas
+	            if (count % 5 == 0) { 
 	                System.out.println();
 	            }
 	        }
