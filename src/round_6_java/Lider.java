@@ -28,8 +28,7 @@ class Lider {
         int inicio = scanner.nextInt();
 
         if (inicio != 1) {
-            System.out.println("Jogo encerrado antes de começar.");
-            scanner.close();
+            System.out.println("Jogo não iniciado.");
             return;
         }
 
@@ -53,7 +52,6 @@ class Lider {
                 }
             }
 
-            // Lógica de eliminados ajustada para cada jogo
             if (jogos[dia - 1].equals("Batatinha Frita")) {
                 int eliminados = jogadoresRestantes - 201;
                 jogadoresRestantes -= eliminados;

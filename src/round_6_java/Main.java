@@ -8,4 +8,5 @@ public class Main {
 		Vip vip = new Vip();
 		vip.VipJogo(sc);
 	}
+
 }
