@@ -50,8 +50,7 @@ public class Jogador {
 		}
 	}
 
-	
-	//vai para jogo
+	// vai para jogo
 	public void menuJogador(Scanner sc) {
 		System.out.println("Você foi convidado a ser jogador!");
 		System.out.print("Informe a quantia de sua divida\nR$: ");
@@ -61,7 +60,7 @@ public class Jogador {
 		if (valorDivida <= 1000) {
 			System.out.println(
 					"Quantia muito baixa.\nVocê está fora do perfil de jogador\n>> Você não jogará. Boa sorte!");
-			
+
 		} else {
 			System.out.print("O quão desesperado você está?\n[1 - 5]: ");
 			int nivelDesespero = sc.nextInt();
@@ -69,13 +68,12 @@ public class Jogador {
 
 			if (nivelDesespero < 3) {
 				System.out.println("Você não participará do jogo.");
-				
+
 			} else {
 				System.out.println(
 						"\n>> REGRAS\nAo entrar no jogo:\nSe perder, será eliminado.\nPoderá sair através de interrupção voluntária.");
 				System.out.println("\n>> PRÊMIO\nR$1.000.000.");
-				
-				
+
 			}
 		}
 	}
