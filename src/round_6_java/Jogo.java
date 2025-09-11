@@ -160,6 +160,7 @@ public class Jogo extends Jogador {
 
 			if (j != null && j.isStatus()) {
 				System.out.println("\nO campeão do jogo é o Jogador " + i + "!");
+				System.out.println("Obrigado por assistir VIP! \nTe esperamos para a próxima edição!");
 				return;
 			}
 		}
