@@ -12,9 +12,11 @@ public class Main {
 		System.out.println("Gostaria de participar como:");
 		while (!entradaValida) {
 			System.out.println("‖ 1. Jogador                    ‖");
-			System.out.println("‖ 2. Soldado                    ‖");
-			System.out.println("‖ 3. VIP                        ‖");
-			System.out.println("‖ 4. Líder                      ‖");
+			System.out.println("‖ 2. Supervisor □               ‖");
+			System.out.println("‖ 3. Soldado △                  ‖");
+			System.out.println("‖ 4. Trabalhador ○              ‖");
+			System.out.println("‖ 5. VIP                        ‖");
+			System.out.println("‖ 6. Líder                      ‖");
 			System.out.printf("%n○ △ □      ○ △ □     ○ △ □   ○ △ ");
 
 			int menuEscolha = sc.nextInt();
@@ -29,19 +31,30 @@ public class Main {
 				break;
 
 			case 2:
-//			Soldado soldado = new Solado();
-				// Jogo objeto
-				// jogo classe do objeto
+				Jogo jogoGuarda01 = new Jogo();
+				jogoGuarda01.jogarQuadrado(sc);
 				entradaValida = true;
 				break;
 
 			case 3:
+				Jogo jogoGuarda02 = new Jogo();
+				jogoGuarda02.jogarTriangulo(sc);
+				entradaValida = true;
+				break;
+
+			case 4:
+				Jogo jogoGuarda03 = new Jogo();
+				jogoGuarda03.jogarCirculo(sc);
+				entradaValida = true;
+				break;
+
+			case 5:
 				Vip vip = new Vip();
 				vip.VipJogo(sc);
 				entradaValida = true;
 				break;
 
-			case 4:
+			case 6:
 				Lider lider = new Lider();
 				lider.iniciarJogo();
 				entradaValida = true;
