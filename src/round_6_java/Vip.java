@@ -53,6 +53,7 @@ public class Vip extends Jogador {
 					jogo.diaAtual++;
 					if (jogo.diaAtual > 6) {
 						jogo.declararCampeao();
+						System.out.println("Obrigado por assistir VIP! \nTe esperamos para a próxima edição!");
 						return;
 					}
 					break;

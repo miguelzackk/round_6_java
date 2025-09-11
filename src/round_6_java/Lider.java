@@ -3,10 +3,12 @@ package round_6_java;
 import java.util.Random;
 import java.util.Scanner;
 
-class Lider {
+class Lider extends Jogo {
 	public void iniciarJogo() {
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
+
+		startJogador();
 
 		String[] jogos = { "Batatinha Frita", "Colmeia", "Cabo de Guerra", "Bolinha de Gude", "Ponte de Cristal",
 				"Lula" };
@@ -23,10 +25,12 @@ class Lider {
 
 		if (inicio != 1) {
 			System.out.println("Jogo não iniciado.");
+			scanner.close();
 			return;
 		}
 
 		for (int dia = 1; dia <= 6; dia++) {
+			jogadoresRestantes = contarVivos();
 			System.out.println("\n=== Dia " + dia + " ===");
 			System.out.println("Jogadores restantes: " + jogadoresRestantes);
 			System.out.println("Jogo do dia: " + jogos[dia - 1]);
@@ -46,41 +50,33 @@ class Lider {
 				}
 			}
 
+			int jogadoresAlvo = 0;
 			if (jogos[dia - 1].equals("Batatinha Frita")) {
-				int eliminados = jogadoresRestantes - 201;
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 201;
 			} else if (jogos[dia - 1].equals("Colmeia")) {
-				int eliminados = jogadoresRestantes - 80;
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 80;
 			} else if (jogos[dia - 1].equals("Cabo de Guerra")) {
-				jogadoresRestantes = 80;
-				int eliminados = jogadoresRestantes - 40;
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 40;
 			} else if (jogos[dia - 1].equals("Bolinha de Gude")) {
-				int eliminados = jogadoresRestantes - 17;
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 17;
 			} else if (jogos[dia - 1].equals("Ponte de Cristal")) {
-				int eliminados = jogadoresRestantes - 2;
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 2;
 			} else if (jogos[dia - 1].equals("Lula")) {
-				int eliminados = jogadoresRestantes - 1;
-				jogadoresRestantes -= eliminados;
-			} else {
-				int eliminados;
-				if (dia < 5) {
-					eliminados = random.nextInt(jogadoresRestantes - 3) + 1;
-				} else if (dia == 5) {
-					eliminados = jogadoresRestantes - 2;
-				} else {
-					eliminados = jogadoresRestantes - 1;
-				}
-
-				if (eliminados > jogadoresRestantes) {
-					eliminados = jogadoresRestantes - 1;
-				}
-
-				jogadoresRestantes -= eliminados;
+				jogadoresAlvo = 1;
 			}
+
+			int eliminacoesNecessarias = jogadoresRestantes - jogadoresAlvo;
+			int eliminadosContador = 0;
+
+			while (eliminadosContador < eliminacoesNecessarias) {
+				int idParaEliminar = random.nextInt(456) + 1;
+				if (jogadores[idParaEliminar].isStatus()) {
+					jogadores[idParaEliminar].setStatus(false);
+					eliminadosContador++;
+				}
+			}
+
+			jogadoresRestantes = contarVivos();
 
 			if (liderInfiltrado) {
 				System.out.println("Você está participando infiltrado no jogo...");
@@ -103,8 +99,9 @@ class Lider {
 			System.out.println("Fim do dia " + dia + ".");
 		}
 
+		declararCampeao();
+
 		System.out.println("\nFim do jogo! Todos os 6 dias se passaram.");
-		System.out.println("Jogadores restantes: " + jogadoresRestantes);
 		scanner.close();
 	}
 }
