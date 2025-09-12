@@ -20,11 +20,9 @@ public class Main {
 			int menuEscolha = sc.nextInt();
 			switch (menuEscolha) {
 			case 1:
-				Jogador jogador = new Jogador();
-				jogador.menuJogador(sc);
-//			Jogo jogo = new Jogo();
-				// Jogo objeto
-				// jogo classe do objeto
+				Jogo jogo = new Jogo();
+				Jogador jogador1 = new Jogador(jogo);
+				jogador1.menuJogador(sc);
 				entradaValida = true;
 				break;
 
