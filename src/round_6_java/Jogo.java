@@ -165,4 +165,195 @@ public class Jogo extends Jogador {
 		}
 	}
 
+	public void jogarQuadrado(Scanner input) {
+		Supervisor quadrado01 = new Supervisor();
+
+		int escolhaMenu;
+		boolean escolhaValida = false;
+
+		for (int i = 1; i <= 6; i++) {
+			int escolhaTeste = (int) (Math.random() * 3);
+
+			// Atualiza a lista
+			quadrado01.setListaJogadores(1, quadrado01.getListaJogadores(1) - this.getEliminacoesDia(i));
+			quadrado01.setListaJogadores(0, quadrado01.getListaJogadores(0) + this.getEliminacoesDia(i));
+
+			if (quadrado01.getEstaVivo()) {
+				do {
+					System.out.printf("\nDia: %d | Jogo: %s\n", i, this.getNomeJogo(i));
+					System.out.printf("\nHoje é o %dº dia, o que você vai " + "fazer? \n", i);
+					System.out.println("| 1 | - Trabalhar\n" + "| 2 | - Descansar");
+					escolhaMenu = input.nextInt();
+
+					switch (escolhaMenu) {
+					case 1:
+						quadrado01.trabalhar(i, this.getEliminacoesDia(i));
+						escolhaValida = true;
+						break;
+					case 2:
+						System.out.println(quadrado01.descansar());
+						escolhaValida = true;
+						break;
+					default:
+						System.out.printf("'%d' não é uma escolha " + "possível.\n", escolhaMenu);
+						break;
+					}
+				} while (!escolhaValida);
+
+				if (quadrado01.getEstaVivo() && (i == 2 || i == 4)) {
+					do {
+						System.out.println(quadrado01.escolherTeste(escolhaTeste));
+						System.out.println("| 1 | - Sim\n" + "| 2 | - Não");
+						escolhaMenu = input.nextInt();
+
+						switch (escolhaMenu) {
+						case 1:
+							quadrado01.setEstaVivo(false);
+							System.out.println("Você foi visto quebrando " + "as regras e executado.");
+							break;
+						case 2:
+							System.out.println("Muito bem.");
+							break;
+						default:
+							System.out.println("Digite uma das opções " + "disponíveis.");
+							break;
+						}
+					} while (escolhaMenu < 1 || escolhaMenu > 2);
+				}
+			}
+		}
+
+		if (quadrado01.getEstaVivo()) {
+			System.out.println("\nO jogo chegou ao fim!\n");
+			System.out.println("Bom trabalho! Esteja preparado para retornar " + "em breve!");
+		}
+	}
+
+	public void jogarTriangulo(Scanner input) {
+		Soldado triangulo01 = new Soldado();
+
+		int escolhaMenu;
+		boolean escolhaValida = false;
+
+		for (int i = 1; i <= 6; i++) {
+			int escolhaTeste = (int) (Math.random() * 3);
+
+			if (triangulo01.getEstaVivo()) {
+				do {
+					System.out.printf("\nDia: %d | Jogo: %s\n", i, this.getNomeJogo(i));
+					System.out.printf("\nHoje é o %dº dia, o que você vai " + "fazer? \n", i);
+					System.out.println("| 1 | - Trabalhar\n" + "| 2 | - Descansar");
+					escolhaMenu = input.nextInt();
+
+					switch (escolhaMenu) {
+					case 1:
+						triangulo01.trabalhar(i, this.getEliminacoesDia(i));
+						escolhaValida = true;
+						break;
+					case 2:
+						System.out.println(triangulo01.descansar());
+						escolhaValida = true;
+						break;
+					default:
+						System.out.printf("'%d' não é uma escolha " + "possível.\n", escolhaMenu);
+						break;
+					}
+				} while (!escolhaValida);
+
+				if (triangulo01.getEstaVivo() && (i == 2 || i == 4)) {
+					do {
+						System.out.println(triangulo01.escolherTeste(escolhaTeste));
+						System.out.println("| 1 | - Sim\n" + "| 2 | - Não");
+						escolhaMenu = input.nextInt();
+
+						switch (escolhaMenu) {
+						case 1:
+							triangulo01.setEstaVivo(false);
+							System.out.println("Você foi visto quebrando " + "as regras e executado.");
+							break;
+						case 2:
+							System.out.println("Muito bem.");
+							break;
+						default:
+							System.out.println("Digite uma das opções " + "disponíveis.");
+							break;
+						}
+					} while (escolhaMenu < 1 || escolhaMenu > 2);
+				}
+			}
+		}
+
+		if (triangulo01.getEstaVivo()) {
+			System.out.println("\nO jogo chegou ao fim!\n");
+			System.out.println("Quantidade de jogadores que você executou " + "\nem cada dia: ");
+
+			for (int i = 1; i <= triangulo01.getExecucoesDia().length; i++) {
+				System.out.printf("Dia: %d: %d\n", i, triangulo01.getExecucoesDia(i));
+			}
+
+			System.out.printf("\nTotal de execuções no jogo: %d\n", triangulo01.getExecucoesTotal());
+
+			System.out.println("Bom trabalho! Esteja preparado para retornar " + "em breve!");
+		}
+	}
+
+	public void jogarCirculo(Scanner input) {
+		Trabalhador circulo01 = new Trabalhador();
+
+		int escolhaMenu;
+		boolean escolhaValida = false;
+
+		for (int i = 1; i <= 6; i++) {
+			int escolhaTeste = (int) (Math.random() * 3);
+
+			if (circulo01.getEstaVivo()) {
+				do {
+					System.out.printf("\nDia: %d | Jogo: %s\n", i, this.getNomeJogo(i));
+					System.out.printf("\nHoje é o %dº dia, o que você vai " + "fazer? \n", i);
+					System.out.println("| 1 | - Trabalhar\n" + "| 2 | - Descansar");
+					escolhaMenu = input.nextInt();
+
+					switch (escolhaMenu) {
+					case 1:
+						circulo01.trabalhar(i, this.getEliminacoesDia(i));
+						escolhaValida = true;
+						break;
+					case 2:
+						System.out.println(circulo01.descansar());
+						escolhaValida = true;
+						break;
+					default:
+						System.out.printf("'%d' não é uma escolha " + "possível.\n", escolhaMenu);
+						break;
+					}
+				} while (!escolhaValida);
+
+				if (circulo01.getEstaVivo() && (i == 2 || i == 4)) {
+					do {
+						System.out.println(circulo01.escolherTeste(escolhaTeste));
+						System.out.println("| 1 | - Sim\n" + "| 2 | - Não");
+						escolhaMenu = input.nextInt();
+
+						switch (escolhaMenu) {
+						case 1:
+							circulo01.setEstaVivo(false);
+							System.out.println("Você foi visto quebrando " + "as regras e executado.");
+							break;
+						case 2:
+							System.out.println("Muito bem.");
+							break;
+						default:
+							System.out.println("Digite uma das opções " + "disponíveis.");
+							break;
+						}
+					} while (escolhaMenu < 1 || escolhaMenu > 2);
+				}
+			}
+		}
+
+		if (circulo01.getEstaVivo()) {
+			System.out.println("\nO jogo chegou ao fim!\n");
+			System.out.println("Bom trabalho! Esteja preparado para retornar " + "em breve!");
+		}
+	}
 }
